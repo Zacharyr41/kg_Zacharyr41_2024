@@ -1,47 +1,49 @@
-var numbers = process.argv.slice(2);
-console.log('The Array: ', numbers);
+//var numbers = process.argv.slice(2);
+//console.log('The Array: ', numbers);
 const DIGIT_MULTIPLIER = 10;
-var functionResult = intsToStrings(numbers);
-console.log("The Result: ", functionResult);
+//var functionResult = intsToStrings(numbers);
+//console.log(functionResult);
 
+
+var arrayOne = [3, 25, 209];
+var arrayTwo = [10, 300, 5];
+var arrayThree = [34, 2, 0];
+var arrayFour = [1, 11, 321, 9];
+var arrayFive = [1234567890];
+
+console.log("Test Cases");
+console.log("Input: ", arrayOne);
+console.log("Result: ", intsToStrings(arrayOne));
+
+console.log("Input: ", arrayTwo);
+console.log("Result: ", intsToStrings(arrayTwo));
+
+console.log("Input: ", arrayThree);
+console.log("Result: ", intsToStrings(arrayThree));
+
+console.log("Input: ", arrayFour);
+console.log("Result: ", intsToStrings(arrayFour));
+
+console.log("Input: ", arrayFive);
+console.log("Result: ", intsToStrings(arrayFive));
 
 function intsToStrings(arr){
     var result = new Array(arr.length);
-    var s;
-    var j;
-    var entry;
-    var currentDigit;
-
+    var currentDigit; //For readability
     for (var i = 0; i < arr.length; i++){
-        s = "";
-        j = 1;
-        entry = arr[i];
+        var s = "";
+        var entry = arr[i];
         do {
-            currentDigit = Math.floor(entry) % Math.pow(DIGIT_MULTIPLIER, j); 
-            console.log("Current Digit: ", currentDigit);
+            //console.log("ENTRY: ", entry);
+            currentDigit = Math.floor(entry) % DIGIT_MULTIPLIER;
+            //console.log("CURRENT DIGIT: ", currentDigit); 
             s = digitToString(currentDigit) + s;
-            
-            j++;
             entry /= 10;
         } while (entry >= 1);
-        
         result[i] = s;
-
     }
     return result;
 }
-/*
-    getNumDigis: Calculates number of digits in an int
-*/
-function getNumDigits(num){
-    var digits = 0; 
-    var multiplier = 1; 
-    while (num / multiplier >= 1){
-        ++digits;
-        multiplier *= 10;
-    }
-    return digits;
-} 
 
 function digitToString(digit){
     var result;
@@ -79,11 +81,4 @@ function digitToString(digit){
     }
     
     return result;
-}
-/*
-    Returns the kth digit of some integer.
-    Digit in the ones place is the "1st" integer
-*/
-function getDigit(number, k){
-    return number % Math.pow(10, k);
 }
