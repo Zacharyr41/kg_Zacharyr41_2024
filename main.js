@@ -1,31 +1,8 @@
-//var numbers = process.argv.slice(2);
-//console.log('The Array: ', numbers);
+var numbers = process.argv.slice(2);
 const DIGIT_MULTIPLIER = 10;
-//var functionResult = intsToStrings(numbers);
-//console.log(functionResult);
+var functionResult = intsToStrings(numbers);
+console.log(functionResult.toString());
 
-
-var arrayOne = [3, 25, 209];
-var arrayTwo = [10, 300, 5];
-var arrayThree = [34, 2, 0];
-var arrayFour = [1, 11, 321, 9];
-var arrayFive = [1234567890];
-
-console.log("Test Cases");
-console.log("Input: ", arrayOne);
-console.log("Result: ", intsToStrings(arrayOne));
-
-console.log("Input: ", arrayTwo);
-console.log("Result: ", intsToStrings(arrayTwo));
-
-console.log("Input: ", arrayThree);
-console.log("Result: ", intsToStrings(arrayThree));
-
-console.log("Input: ", arrayFour);
-console.log("Result: ", intsToStrings(arrayFour));
-
-console.log("Input: ", arrayFive);
-console.log("Result: ", intsToStrings(arrayFive));
 
 function intsToStrings(arr){
     var result = new Array(arr.length);
@@ -34,11 +11,9 @@ function intsToStrings(arr){
         var s = "";
         var entry = arr[i];
         do {
-            //console.log("ENTRY: ", entry);
-            currentDigit = Math.floor(entry) % DIGIT_MULTIPLIER;
-            //console.log("CURRENT DIGIT: ", currentDigit); 
+            currentDigit = Math.floor(entry) % DIGIT_MULTIPLIER; 
             s = digitToString(currentDigit) + s;
-            entry /= 10;
+            entry /= DIGIT_MULTIPLIER;
         } while (entry >= 1);
         result[i] = s;
     }
@@ -77,8 +52,9 @@ function digitToString(digit){
             break;
         case 9:
             result = "Nine";
-            break;   
+            break;    
     }
     
     return result;
 }
+
